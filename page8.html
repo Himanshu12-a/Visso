@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Personality Scan</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+.trait {
+  margin: 10px 0;
+  text-align: left;
+}
+
+.barBox {
+  width: 100%;
+  height: 10px;
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  background: cyan;
+  transition: width 1s;
+}
+
+#analysisBox {
+  display: none;
+  margin-top: 15px;
+}
+
+.spin {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>🤖 AI Deep Personality Analysis</h1>
+  <p id="status">
+    Connecting to AI Server <span class="spin">🔄</span>
+  </p>
+
+  <div id="analysisBox">
+
+    <p id="titleResult"></p>
+
+    <div class="trait">
+      Cuteness 💖
+      <div class="barBox">
+        <div class="bar" id="cuteBar"></div>
+      </div>
+    </div>
+
+    <div class="trait">
+      Drama Level 🎭
+      <div class="barBox">
+        <div class="bar" id="dramaBar"></div>
+      </div>
+    </div>
+
+    <div class="trait">
+      Food Addiction 🍕
+      <div class="barBox">
+        <div class="bar" id="foodBar"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <button id="nextBtn" style="display:none;" onclick="goNext()">
+    View Final Result
+  </button>
+</div>
+
+<script>
+setTimeout(function() {
+  document.getElementById("status").innerText = "Analysis Complete ✅";
+  document.getElementById("analysisBox").style.display = "block";
+
+  // Random values
+  let cute = Math.floor(Math.random() * 50) + 50;
+  let drama = Math.floor(Math.random() * 60) + 40;
+  let food = Math.floor(Math.random() * 70) + 30;
+
+  document.getElementById("cuteBar").style.width = cute + "%";
+  document.getElementById("dramaBar").style.width = drama + "%";
+  document.getElementById("foodBar").style.width = food + "%";
+
+  let titles = [
+    "Result: Certified Drama Queen 👑",
+    "Result: Snack Monster 🍫",
+    "Result: Professional Overthinker 🧠",
+    "Result: Cutest Sister Alive ❤️",
+    "Result: Meme Machine 😂"
+  ];
+
+  document.getElementById("titleResult").innerText =
+    titles[Math.floor(Math.random() * titles.length)];
+
+  document.getElementById("nextBtn").style.display = "inline-block";
+
+}, 3000);
+
+function goNext() {
+  window.location.href = "page9.html";
+}
+</script>
+
+</body>
+</html>

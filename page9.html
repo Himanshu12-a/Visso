@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>System Frozen</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+#freezeOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1000;
+}
+
+#message {
+  margin-top: 15px;
+  font-size: 18px;
+  color: yellow;
+}
+</style>
+</head>
+
+<body>
+
+<div id="freezeOverlay"></div>
+
+<div class="card">
+  <h1>❄ SYSTEM FROZEN ❄</h1>
+  <p>Touch not responding...</p>
+
+  <p id="message"></p>
+
+  <button id="nextBtn" onclick="goNext()" disabled>
+    Try Again
+  </button>
+</div>
+
+<script>
+let overlay = document.getElementById("freezeOverlay");
+let message = document.getElementById("message");
+let nextBtn = document.getElementById("nextBtn");
+
+// Freeze for 3 seconds
+setTimeout(function() {
+  message.innerText = "⚠ Critical Error Detected...";
+}, 1500);
+
+setTimeout(function() {
+  message.innerText = "System Restored ✅";
+  overlay.style.display = "none"; // unfreeze
+  nextBtn.disabled = false;
+}, 3500);
+
+function goNext() {
+  window.location.href = "page10.html";
+}
+</script>
+
+</body>
+</html>

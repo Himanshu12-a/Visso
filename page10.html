@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>You Got Pranked 😈</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(circle at center, #000000, #1a001f);
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  animation: fadeIn 2s ease forwards;
+  opacity: 0;
+}
+
+h1 {
+  font-size: 40px;
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 30px #ff00ff;
+  animation: glow 1.5s infinite alternate;
+}
+
+p {
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #ff00ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff00ff; }
+  to { text-shadow: 0 0 25px #ff66ff; }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: red;
+  top: -10px;
+  animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+  }
+}
+
+/* Music unlock overlay */
+#musicOverlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  color: white;
+  font-size: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="musicOverlay" onclick="enableMusic()">
+  🔊 Tap Anywhere To Start Celebration
+</div>
+
+<div class="container">
+  <h1> YOU GOT PRANKED 😁</h1>
+  <p>You survived all 9 levels!</p>
+  <p>You are officially the Best Sister Ever ❤️</p>
+  <p> Ha to Miss Vaishnavi Goswami I hope you enjoyed it<br>
+    This was just to refresh you if kuchh problems hai and you not telling anyone<br>
+    Matlab everyone has some silent wars of their own So I hope isse kuchh toh refresh hua hoga and You can play it again and again<br>
+    Also I can make a lot more like these and also different from this<br>
+    Ha or kuchh khane ka mn kre toh apun hai sab dilaega tera bhai..Hehe<br>
+    Bye bye for now and Kuchh btana ho bta skti ho And yes ye toh meko pta chal chuka hai ki aap kitni bdi overthinker ho<br>
+    So try to do it less.. 
+    Tata for now..<br>
+
+
+</p>
+  <button onclick="restart()">Play Again</button>
+</div>
+
+<audio id="bgMusic" src="VAudio.mpeg" loop></audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+const overlay = document.getElementById("musicOverlay");
+
+// Try autoplay
+window.onload = function() {
+  music.play().catch(() => {
+    overlay.style.display = "flex";
+  });
+
+  launchConfetti();
+};
+
+// Enable music manually if blocked
+function enableMusic() {
+  music.play();
+  overlay.style.display = "none";
+}
+
+// Restart prank
+function restart() {
+  window.location.href = "index.html";
+}
+
+// Confetti generator
+function launchConfetti() {
+  for (let i = 0; i < 50; i++) {
+    let conf = document.createElement("div");
+    conf.classList.add("confetti");
+    conf.style.left = Math.random() * 100 + "vw";
+    conf.style.background = 
+      ["#ff00ff", "#00ffff", "#ffff00", "#ff0000"]
+      [Math.floor(Math.random() * 4)];
+    conf.style.animationDuration = 
+      (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(conf);
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lottery Winner</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+#money {
+  font-size: 40px;
+  margin: 20px 0;
+  display: none;
+  animation: pop 0.6s ease;
+}
+
+.spin {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>🎰 Lottery System</h1>
+  <p id="status">
+    Checking eligibility <span class="spin">🔄</span>
+  </p>
+
+  <div id="money">₹10,00,000 💰</div>
+
+  <p id="twist"></p>
+
+  <button id="nextBtn" style="display:none;" onclick="goNext()">
+    Claim Prize
+  </button>
+</div>
+
+<script>
+
+// Step 1 - Fake checking
+setTimeout(function() {
+  document.getElementById("status").innerText = "🎉 CONGRATULATIONS 🎉";
+  document.getElementById("money").style.display = "block";
+}, 2000);
+
+// Step 2 - Twist message
+setTimeout(function() {
+  document.getElementById("twist").innerText =
+    "Only valid in Dream World 😂";
+  document.getElementById("nextBtn").style.display = "inline-block";
+}, 4000);
+
+function goNext() {
+  window.location.href = "page5.html";
+}
+</script>
+
+</body>
+</html>

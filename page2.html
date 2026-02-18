@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Catch Me</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Catch the Button 😏</h1>
+  <button id="runBtn">Catch Me</button>
+</div>
+
+<script>
+const btn = document.getElementById("runBtn");
+let clickCount = 0;
+
+btn.addEventListener("click", function() {
+  clickCount++;
+
+  // First 5 clicks → move button
+  if (clickCount < 5) {
+    btn.style.position = "absolute";
+    btn.style.top = Math.random() * 80 + "%";
+    btn.style.left = Math.random() * 80 + "%";
+  } 
+  // After 5 clicks → go to next page
+  else {
+    window.location.href = "page3.html";
+  }
+});
+</script>
+
+</body>
+</html>
